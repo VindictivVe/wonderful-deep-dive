@@ -1,15 +1,34 @@
-import { View, StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, StyleSheet, BackHandler } from 'react-native';
 import { Button } from 'react-native-elements';
+import GyroscopeData from './utils/Gyroscope';
+import { Accelerometer } from 'expo-sensors';
 
 const HomeScreen = (props) => {
+
+    const [data, setData] = useState({
+        x: 0,
+        y: 0,
+        z: 0,
+    });
 
     const startHandler = () => {
         props.setBol();
     }
 
     const quitHandler = () => {
-
+        BackHandler.exitApp();
     }
+
+    useEffect(() => {
+        Accelerometer.addListener(accData => {
+            setData(accData);
+        });
+    }, []);
+
+    useEffect(() => {
+        console.log(data);
+    }, [data])
 
     return(
         <View style={styles.container}>
