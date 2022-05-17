@@ -193,7 +193,9 @@ const DepthNavigator = () => {
 
     return(
         <SafeAreaView style={styles.container}>
-            {accData ? accData.z > 0.75 ? <View><Text>LAOSDLAOSLDOASDLASD</Text></View> : <FlatList style={styles.scrollView} 
+            {accData ? accData.z > 0.75 ? <View><Text>LAOSDLAOSLDOASDLASD</Text></View> 
+            : 
+            <FlatList style={styles.scrollView} 
                 horizontal 
                 data={data} 
                 renderItem={renderItem}
@@ -206,8 +208,8 @@ const DepthNavigator = () => {
                     offset: (width) * index,
                     index,
                 })}
-                onScroll={onStartReached}
-            /> : <View></View>}
+                onScroll={onStartReached}/> 
+            : <View></View>}
              
         </SafeAreaView>
     )
