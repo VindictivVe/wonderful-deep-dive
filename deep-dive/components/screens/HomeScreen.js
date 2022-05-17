@@ -1,16 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, BackHandler } from 'react-native';
 import { Button } from 'react-native-elements';
-import { Accelerometer } from 'expo-sensors';
+import * as ScreenOrientation from 'expo-screen-orientation';
 
 const HomeScreen = (props) => {
-
-    const [data, setData] = useState({
-        x: 0,
-        y: 0,
-        z: 0,
-    });
-
     const startHandler = () => {
         props.setBol();
     }
@@ -20,14 +13,8 @@ const HomeScreen = (props) => {
     }
 
     useEffect(() => {
-        Accelerometer.addListener(accData => {
-            setData(accData);
-        });
+        ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE_LEFT);
     }, []);
-
-    useEffect(() => {
-        console.log(data);
-    }, [data])
 
     return(
         <View style={styles.container}>
