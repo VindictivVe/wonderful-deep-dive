@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, BackHandler } from 'react-native';
 import { Button } from 'react-native-elements';
-import GyroscopeData from './utils/Gyroscope';
 import { Accelerometer } from 'expo-sensors';
 
 const HomeScreen = (props) => {
