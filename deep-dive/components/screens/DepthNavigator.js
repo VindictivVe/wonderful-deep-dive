@@ -8,6 +8,8 @@ const DepthNavigator = () => {
     const [currentOffsetX, setCurrentOffsetX] = useState(0);
     const { height, width} = useWindowDimensions();
     const [ref, setRef] = useState(null);
+    const [changable, setChangable] = useState(true);
+    const [index, setIndex] = useState(1);
 
     const [gyroData, setGyroData] = useState({
         x: 0,
@@ -173,15 +175,16 @@ const DepthNavigator = () => {
     const getCurrentOffset = event => setCurrentOffsetX(event.nativeEvent.contentOffset.x);
 
     useEffect(() => {
+        console.log(index);
         if(ref){
             ref.scrollToOffset({offset: currentOffsetX + ((gyroData.x)*(width))/4});
-            console.log(currentOffsetX + gyroData.x);
         }
-    }, [gyroData]);
+        changeLayer();
+    }, [gyroData, accData]);
 
     useEffect(() => {
         if(ref){
-            ref.scrollToIndex({index: data.length-4, viewPosition: 0, animated: false});
+            ref.scrollToIndex({index: data.length-4, viewPosition: 0, animated: true});
         }
     }, [ref]);
 
@@ -191,26 +194,51 @@ const DepthNavigator = () => {
         </Text>
     );
 
+    const changeLayer = () => {
+        if(accData && changable){
+            if(accData.z > 0.75 && index !== 5){
+                //Index +1
+                setIndex(index + 1);
+                setChangable(false);
+                setTimeout(() => {
+                    setChangable(true);
+                }, 5000);
+            }
+            else if(accData.z < -0.75 && index !== 1){
+                //Index -1
+                setIndex(index - 1);
+                setChangable(false);
+                setTimeout(() => {
+                    setChangable(true);
+                }, 5000);
+            }
+        }
+    }
+
     return(
         <SafeAreaView style={styles.container}>
-            {accData ? accData.z > 0.75 ? <View><Text>LAOSDLAOSLDOASDLASD</Text></View> 
-            : 
-            <FlatList style={styles.scrollView} 
-                horizontal 
-                data={data} 
-                renderItem={renderItem}
-                keyExtractor={item => item.id} 
-                onEndReachedThreshold={0.5} 
-                onEndReached={endHandler}
-                ref={(ref) => setRef(ref)}
-                getItemLayout={(data, index) => ({
-                    length: width,
-                    offset: (width) * index,
-                    index,
-                })}
-                onScroll={onStartReached}/> 
-            : <View></View>}
-             
+            {index == 1 ? 
+                <FlatList style={styles.scrollView} 
+                    horizontal 
+                    data={data} 
+                    renderItem={renderItem}
+                    keyExtractor={item => item.id} 
+                    onEndReachedThreshold={0.5} 
+                    onEndReached={endHandler}
+                    ref={(ref) => setRef(ref)}
+                    getItemLayout={(data, index) => ({
+                        length: width,
+                        offset: (width) * index,
+                        index,
+                    })}
+                    onScroll={onStartReached}
+                />  
+                : index == 2 ? <View><Text>Ebene 2</Text></View>
+                : index == 3 ? <View><Text>Ebene 3</Text></View>
+                : index == 4 ? <View><Text>Ebene 4</Text></View>
+                : index == 5 ? <View><Text>Ebene 5</Text></View>
+                : <></>
+            }
         </SafeAreaView>
     )
 };
