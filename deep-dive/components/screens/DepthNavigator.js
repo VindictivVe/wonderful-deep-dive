@@ -10,6 +10,7 @@ const DepthNavigator = () => {
     const [ref, setRef] = useState(null);
     const [changable, setChangable] = useState(true);
     const [index, setIndex] = useState(1);
+    const [isScrolling, setIsScrolling] = useState(true);
 
     const [gyroData, setGyroData] = useState({
         x: 0,
@@ -139,6 +140,69 @@ const DepthNavigator = () => {
           },
     ]);
 
+    //Entry item of flatlist
+    const renderItem = ({ item }) => (
+        <Text style={[{width: width, height: height, backgroundColor: item.color}]}>
+            {item.title}
+        </Text>
+    );
+
+    //Constantly update current offset
+    const getCurrentOffset = event => setCurrentOffsetX(event.nativeEvent.contentOffset.x);
+
+    //Scroll according to head rotation
+    useEffect(() => {
+        if(ref && !isScrolling){
+            ref.scrollToOffset({offset: currentOffsetX + ((gyroData.x)*(width))/4});
+        }
+    }, [gyroData]);
+
+    //Change layer according to head tilt
+    useEffect(() => {
+        changeLayer();
+    }, [accData]);
+
+    //Called when accelerometer data changes
+    const changeLayer = () => {
+        if(accData && changable){
+            if(accData.z > 0.75 && index !== 5){
+                //Index +1
+                setIndex(index + 1);
+                setChangable(false);
+                setTimeout(() => {
+                    setChangable(true);
+                }, 5000);
+            }
+            else if(accData.z < -0.75 && index !== 1){
+                //Index -1
+                setIndex(index - 1);
+                setChangable(false);
+                setTimeout(() => {
+                    setChangable(true);
+                }, 5000);
+            }
+        }
+    }
+
+    //Scroll to end when flatlist is initiated
+    useEffect(() => {
+        if(ref){
+            ref.scrollToEnd({animated: true});
+            setTimeout(() => {
+                setIsScrolling(false);
+            }, 1000)
+        }
+    }, [ref]);
+
+    //Call this in onScroll to check if start point is reached
+    const onStartReached = event => {
+        if(event.nativeEvent.contentOffset.x == 0){
+            setData([{id: shortid.generate(),title: 'First Item',color: "blue",},{id: shortid.generate(),title: 'Second Item',color: "green",},{id: shortid.generate(),title: 'Third Item',color: "red",},{id: shortid.generate(),title: 'Fourth Item',color: "yellow",},...data]);
+            return true;
+        }
+    }
+
+    //Fires when end point of flatlist is reached
     const endHandler = () => {
         setData([...data, 
             {
@@ -164,66 +228,16 @@ const DepthNavigator = () => {
         ]);
     }
 
-    const onStartReached = event => {
-        if(event.nativeEvent.contentOffset.x == 0){
-            setData([{id: shortid.generate(),title: 'First Item',color: "blue",},{id: shortid.generate(),title: 'Second Item',color: "green",},{id: shortid.generate(),title: 'Third Item',color: "red",},{id: shortid.generate(),title: 'Fourth Item',color: "yellow",},...data]);
-            return true;
-        }
-        getCurrentOffset(event);
-    }
-
-    const getCurrentOffset = event => setCurrentOffsetX(event.nativeEvent.contentOffset.x);
-
-    useEffect(() => {
-        console.log(index);
-        if(ref){
-            ref.scrollToOffset({offset: currentOffsetX + ((gyroData.x)*(width))/4});
-        }
-        changeLayer();
-    }, [gyroData, accData]);
-
-    useEffect(() => {
-        if(ref){
-            ref.scrollToIndex({index: data.length-4, viewPosition: 0, animated: true});
-        }
-    }, [ref]);
-
-    const renderItem = ({ item }) => (
-        <Text style={[{width: width, height: height, backgroundColor: item.color}]}>
-            {item.title}
-        </Text>
-    );
-
-    const changeLayer = () => {
-        if(accData && changable){
-            if(accData.z > 0.75 && index !== 5){
-                //Index +1
-                setIndex(index + 1);
-                setChangable(false);
-                setTimeout(() => {
-                    setChangable(true);
-                }, 5000);
-            }
-            else if(accData.z < -0.75 && index !== 1){
-                //Index -1
-                setIndex(index - 1);
-                setChangable(false);
-                setTimeout(() => {
-                    setChangable(true);
-                }, 5000);
-            }
-        }
-    }
-
     return(
         <SafeAreaView style={styles.container}>
-            {index == 1 ? 
+            {
+            index == 0 ? 
                 <FlatList style={styles.scrollView} 
                     horizontal 
                     data={data} 
                     renderItem={renderItem}
                     keyExtractor={item => item.id} 
-                    onEndReachedThreshold={0.5} 
+                    onEndReachedThreshold={0.25} 
                     onEndReached={endHandler}
                     ref={(ref) => setRef(ref)}
                     getItemLayout={(data, index) => ({
@@ -231,13 +245,28 @@ const DepthNavigator = () => {
                         offset: (width) * index,
                         index,
                     })}
-                    onScroll={onStartReached}
+                    onScroll={getCurrentOffset}
                 />  
-                : index == 2 ? <View><Text>Ebene 2</Text></View>
-                : index == 3 ? <View><Text>Ebene 3</Text></View>
-                : index == 4 ? <View><Text>Ebene 4</Text></View>
-                : index == 5 ? <View><Text>Ebene 5</Text></View>
-                : <></>
+            : index == 1 ? 
+                <FlatList style={styles.scrollView} 
+                    horizontal 
+                    data={data} 
+                    renderItem={renderItem}
+                    keyExtractor={item => item.id} 
+                    onEndReachedThreshold={0.25} 
+                    onEndReached={endHandler}
+                    ref={(ref) => setRef(ref)}
+                    getItemLayout={(data, index) => ({
+                        length: width,
+                        offset: (width) * index,
+                        index,
+                    })}
+                    onScroll={getCurrentOffset}
+                />  
+            : index == 2 ? <View><Text>Ebene 3</Text></View>
+            : index == 3 ? <View><Text>Ebene 4</Text></View>
+            : index == 4 ? <View><Text>Ebene 5</Text></View>
+            : <></>
             }
         </SafeAreaView>
     )
