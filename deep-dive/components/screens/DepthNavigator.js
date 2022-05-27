@@ -4,6 +4,8 @@ import shortid from 'shortid';
 
 import { Gyroscope, Accelerometer } from "expo-sensors";
 
+import {ListItem} from '../listItems/ListItem';
+
 const DepthNavigator = () => {
     const [currentOffsetX, setCurrentOffsetX] = useState(0);
     const { height, width} = useWindowDimensions();
@@ -80,71 +82,81 @@ const DepthNavigator = () => {
     const [data, setData] = useState([
         {
           id: shortid.generate(),
-          title: 'First Item',
+          title: 'Wussten Sie das?',
+          text: 'Die epipelagiale Schicht (gr. pélagos (offene See) und epí (auf)) reicht von der Wasseroberfläche bis in eine Tiefe von 200m. Es gibt viel Licht und Wärme in dieser Schicht, obwohl beide mit zunehmender Tiefe abnehmen. Der Druck ist ebenfalls minimal und steigt mit der Tiefe.',
           color: "blue",
         },
         {
           id: shortid.generate(),
-          title: 'Second Item',
+          title: 'Lebewesen',
+          text: 'Diese oberste, vom Licht beeinflusste Schicht ist besonders produktiv, da hier die Primärproduzenten (Algen, Cyanobakterien und Seegras) durch die Photosynthese Biomasse aufbauen. Diese Primärproduktion ist Basis des Lebens im Meer. Hier tummeln sich die meisten bekannten Meeresbewohner, so wie viele der Fische, die wir essen, und die Korallenriffe, die unsere Schiffe überraschen',
           color: "green",
         },
         {
           id: shortid.generate(),
-          title: 'Third Item',
+          title: 'Verschmutzung',
+          text: 'Bedroht werden diese Arten u.a. durch herabsinkendes Mikroplastik, welches die Meerestiere mit Nahrung verwechseln und fressen. Schätzungen zufolge landen jährlich zwischen 4,8 und 12,7 Millionen Tonnen Plastikmüll in den Ozeanen.',
           color: "red",
         },
         {
-            id: shortid.generate(),
-            title: 'Fourth Item',
-            color: "yellow",
+          id: shortid.generate(),
+          title: 'Fourth Item',
+          text: '???',
+          color: "yellow",
         },
         {
             id: shortid.generate(),
-            title: 'First Item',
+            title: 'Wussten Sie das?',
+            text: 'Die epipelagiale Schicht (gr. pélagos (offene See) und epí (auf)) reicht von der Wasseroberfläche bis in eine Tiefe von 200m. Es gibt viel Licht und Wärme in dieser Schicht, obwohl beide mit zunehmender Tiefe abnehmen. Der Druck ist ebenfalls minimal und steigt mit der Tiefe.',
             color: "blue",
           },
           {
             id: shortid.generate(),
-            title: 'Second Item',
+            title: 'Lebewesen',
+            text: 'Diese oberste, vom Licht beeinflusste Schicht ist besonders produktiv, da hier die Primärproduzenten (Algen, Cyanobakterien und Seegras) durch die Photosynthese Biomasse aufbauen. Diese Primärproduktion ist Basis des Lebens im Meer. Hier tummeln sich die meisten bekannten Meeresbewohner, so wie viele der Fische, die wir essen, und die Korallenriffe, die unsere Schiffe überraschen',
             color: "green",
           },
           {
             id: shortid.generate(),
-            title: 'Third Item',
+            title: 'Verschmutzung',
+            text: 'Bedroht werden diese Arten u.a. durch herabsinkendes Mikroplastik, welches die Meerestiere mit Nahrung verwechseln und fressen. Schätzungen zufolge landen jährlich zwischen 4,8 und 12,7 Millionen Tonnen Plastikmüll in den Ozeanen.',
             color: "red",
           },
           {
-              id: shortid.generate(),
-              title: 'Fourth Item',
-              color: "yellow",
+            id: shortid.generate(),
+            title: 'Fourth Item',
+            text: '???',
+            color: "yellow",
           },
           {
             id: shortid.generate(),
-            title: 'First Item',
+            title: 'Wussten Sie das?',
+            text: 'Die epipelagiale Schicht (gr. pélagos (offene See) und epí (auf)) reicht von der Wasseroberfläche bis in eine Tiefe von 200m. Es gibt viel Licht und Wärme in dieser Schicht, obwohl beide mit zunehmender Tiefe abnehmen. Der Druck ist ebenfalls minimal und steigt mit der Tiefe.',
             color: "blue",
           },
           {
             id: shortid.generate(),
-            title: 'Second Item',
+            title: 'Lebewesen',
+            text: 'Diese oberste, vom Licht beeinflusste Schicht ist besonders produktiv, da hier die Primärproduzenten (Algen, Cyanobakterien und Seegras) durch die Photosynthese Biomasse aufbauen. Diese Primärproduktion ist Basis des Lebens im Meer. Hier tummeln sich die meisten bekannten Meeresbewohner, so wie viele der Fische, die wir essen, und die Korallenriffe, die unsere Schiffe überraschen',
             color: "green",
           },
           {
             id: shortid.generate(),
-            title: 'Third Item',
+            title: 'Verschmutzung',
+            text: 'Bedroht werden diese Arten u.a. durch herabsinkendes Mikroplastik, welches die Meerestiere mit Nahrung verwechseln und fressen. Schätzungen zufolge landen jährlich zwischen 4,8 und 12,7 Millionen Tonnen Plastikmüll in den Ozeanen.',
             color: "red",
           },
           {
-              id: shortid.generate(),
-              title: 'Fourth Item',
-              color: "yellow",
+            id: shortid.generate(),
+            title: 'Fourth Item',
+            text: '???',
+            color: "yellow",
           },
     ]);
 
     //Entry item of flatlist
     const renderItem = ({ item }) => (
-        <Text style={[{width: width, height: height, backgroundColor: item.color}]}>
-            {item.title}
-        </Text>
+        <ListItem width={width} height={height} color={item.color} title={item.title} text={item.text}></ListItem>
     );
 
     //Constantly update current offset
