@@ -32,7 +32,7 @@ const DepthNavigator = () => {
   const [gyroSubscription, setGyroSubscription] = useState(null);
 
   const _gyroSlow = () => {
-    Gyroscope.setUpdateInterval(50);
+    Gyroscope.setUpdateInterval(100);
   };
 
   const _gyroSubscribe = () => {
@@ -59,7 +59,7 @@ const DepthNavigator = () => {
   const [accSubscription, setAccSubscription] = useState(null);
 
   const _accSlow = () => {
-    Accelerometer.setUpdateInterval(50);
+    Accelerometer.setUpdateInterval(100);
   };
 
   const _accSubscribe = () => {
