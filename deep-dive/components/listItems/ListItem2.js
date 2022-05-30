@@ -1,15 +1,15 @@
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, Text, ImageBackground } from "react-native";
 
-export const ListItem = (props) => {
+export const ListItem2 = (props) => {  
     return(
-        <View style={{width: props.width, height: props.height, backgroundColor: props.color, justifyContent: "center", alignItems: "center"}}>
+        <ImageBackground source={require("deep-dive/assets/layers/DeepSeaEnviromentLvl2.png")} style={{width: props.width, height: props.height, justifyContent: "center", alignItems: "center"}}>
             <Text style={styles.title}>
                 {props.title}
             </Text>
             <Text style={styles.text}>
                 {props.text}
             </Text>
-        </View>
+        </ImageBackground>
     );
 };
 
