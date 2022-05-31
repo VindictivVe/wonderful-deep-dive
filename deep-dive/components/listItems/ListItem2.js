@@ -17,12 +17,12 @@ const styles = StyleSheet.create({
     text: {
         textAlign: "center",
         width: "80%",
-        fontSize: 25
+        fontSize: 17
     },
     title:{
         textAlign:"center",
         width: "90%",
-        fontSize: 35,
+        fontSize: 30,
         fontWeight: "bold"
     }
 });
