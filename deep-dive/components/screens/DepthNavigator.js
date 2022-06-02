@@ -269,13 +269,13 @@ const DepthNavigator = () => {
   );
 
   const renderItem5 = ({ item }) => (
-    <ListItem4
+    <ListItem5
       width={width}
       height={height}
       color={item.color}
       title={item.title}
       text={item.text5}
-    ></ListItem4>
+    ></ListItem5>
   );
 
   //Constantly update current offset
@@ -490,7 +490,7 @@ const DepthNavigator = () => {
           style={styles.scrollView}
           horizontal
           data={data}
-          renderItem={renderItem4}
+          renderItem={renderItem5}
           keyExtractor={(item) => item.id}
           onEndReachedThreshold={0.25}
           onEndReached={endHandler}
