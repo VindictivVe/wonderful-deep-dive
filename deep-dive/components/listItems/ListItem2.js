@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     text: {
         textAlign: "center",
         width: "80%",
-        fontSize: 25
+        fontSize: 17
     },
     title:{
         textAlign:"center",
