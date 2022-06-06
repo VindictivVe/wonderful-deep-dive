@@ -18,13 +18,14 @@ const styles = StyleSheet.create({
         textAlign: "center",
         width: "80%",
         fontSize: 17,
-        color: "white"
+        color: "gray"
+
     },
     title:{
         textAlign:"center",
         width: "90%",
-        fontSize: 35,
+        fontSize: 30,
         fontWeight: "bold",
-        color: "white"
+        color: "gray"
     }
 });

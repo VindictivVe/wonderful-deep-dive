@@ -2,7 +2,7 @@ import { StyleSheet, Text, ImageBackground } from "react-native";
 
 export const ListItem5 = (props) => {  
     return(
-        <ImageBackground source={require("deep-dive/assets/layers/DeepSeaEnviromentLvl4.png")} style={{width: props.width, height: props.height, justifyContent: "center", alignItems: "center"}}>
+        <ImageBackground source={require("deep-dive/assets/layers/DeepSeaEnviromentLvl5.png")} style={{width: props.width, height: props.height, justifyContent: "center", alignItems: "center"}}>
             <Text style={styles.title}>
                 {props.title}
             </Text>
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     title:{
         textAlign:"center",
         width: "90%",
-        fontSize: 35,
+        fontSize: 30,
         fontWeight: "bold",
         color: "white"
     }

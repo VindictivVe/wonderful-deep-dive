@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     title:{
         textAlign:"center",
         width: "90%",
-        fontSize: 35,
+        fontSize: 30,
         fontWeight: "bold"
     }
 });
