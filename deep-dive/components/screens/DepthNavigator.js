@@ -390,24 +390,6 @@ const DepthNavigator = () => {
         text4: "Es finden sich neben Mikroplastik noch größere Plastikteile.",
         text5: "Selbst in dieser Tiefe, im Marianengraben, haben Meeresforscher*innen noch eine Plastiktüte entdeckt.",
       },
-      {
-        id: shortid.generate(),
-        title: "Klimawandel",
-        text1: "Die extrem artenreichen Öko-Systeme sind auch durch die wärmeren Temperaturen bedroht. Wissenschaftler gehen davon aus, dass nur rund die Hälfte aller Korallenriffe erhalten bleibt, wenn wir den Temperaturanstieg auf derzeit unrealistische 1,2 Grad Celsius beschränken.  ",
-        text2: "Meere nehmen große Mengen Kohlendioxid auf. Laut dem Helmholtz-Zentrum für Polar- und Meeresforschung haben sie mehr als ein Viertel des vom Menschen verursachten atmosphärischen Kohlendioxids aufgenommen. Für sie hat das fatale Folgen. Denn: Seit Beginn der industriellen Revolution sind die Meere um fast 30 Prozent saurer geworden, weil die Aufnahme des Kohlendioxids den pH-Wert der Meere senkt. Die Folgen der Versauerung reichen von Leiden der Wasserlebewesen bis hin zu fatalen Auswirkungen für die Menschen.",
-        text3: "Die Versauerung der Meere hat nicht nur Auswirkungen auf die Unterwasserwelt. Sie wirkt sich auch auf die Fähigkeit des Ozeans aus, Kohlenstoff zu speichern. Heißt: Je mehr Kohlendioxid die Meere aufnehmen, desto saurer werden sie, und je saurer sie werden, desto weniger Kohlendioxid können sie aufnehmen. Ihre so wichtige Funktion für die Begrenzung der Klimakrise ist damit also gefährdet.",
-        text4: "Die Versauerung der Meere schreitet überall voran – besonders schnell in den Polarregionen. Dort könnte es, so das Helmholtz-Zentrum für Polar- und Meeresforschung, bereits Mitte dieses Jahrhunderts dazu führen, dass zu wenig Aragonit vorhanden ist. Nie gehört? Aragonit ist ein wichtiger Bestandteil von Kalkschalen. Unter einem Mangel leiden also vor allem etwa Muscheln, Seesterne und Korallen – und die oben angesprochenen Korallenriffe",
-        text5: "Für die Versauerung der Meere gibt es nur einen Therapieansatz: Wir müssen unseren Kohlendioxidausstoß reduzieren. Die 'Therapie' ist allerdings eher langfristig angelegt. Das Alfred-Wegener-Institut rechnet damit, dass die Ozeane Tausende von Jahren bräuchten, sich zu erholen – selbst wenn wir es schaffen würden, den CO2-Ausstoß von heute auf morgen auf null zu reduzieren. Die Versauerung ist nicht das einzige große Problem der Meere. Sie sind außerdem zu warm, verdreckt, ausgeraubt und leer gefischt.",
-      },
-      {
-        id: shortid.generate(),
-        title: "Weitere Probleme",
-        text1: "Meeresverschmutzungen tragen zu einem verstärkten Eutrophierungsprozess bei. Die Anreicherung von Nährstoffen verursacht eine Massenvermehrung von Algen- und Cyanobakterien. Obwohl die Schichten infolge der Fotosynthese des Phytoplanktons zunächst mit Sauerstoff angereichert werden nach dem Absterben der Algen werden diese durch Bakterien abgebaut, was viel Sauerstoff benötigt, sodass die Sauerstoffkonzentration des Sees rasch absinkt.",
-        text2: "Eine starke Bedrohung der im Meer lebenden Organismen geht von anthropogenen Stoffeinträgen aus. Die Verschmutzung der Meere durch Schadstoffe wird zu mehr als 80 % durch Aktivitäten auf dem Festland verursacht. Durch Flüsse gelangen Halogenverbindungen, Öle, Schwermetalle und Nährstoffe in die Meere und gefährden insbesondere die Lebensgemeinschaften der Küstenregionen und die an den Küsten lebenden Menschen.",
-        text3: "Zusätzlich zu der oben genannten Eutrophierung werden bei Fäulnisprozessen die verbliebenen Sauerstoffreste verbraucht, sodass eine Faulschlammschicht entsteht. Als Stoffwechselprodukte entstehen toxische Kohlenwasserstoffe, z.B. Methan. Dadurch sterben Fische, Krebse und Schnecken an Sauerstoffmangel.",
-        text4: "Das Endstadium der Eutrophierung ist der Extremfall: Das so genannte „Umkippen“ des Sees, in dem der See biologisch tot ist. Meist tritt dieser Fall jedoch nicht ein, sondern es stellt sich ein biologisches Gleichgewicht ein. Den Grad der Eutrophierung kann man u.a. an der Häufigkeit bestimmter Fischarten erkennen.",
-        text5: "Während sich die natürliche Eutrophierung von Seen in Zeiträumen von Tausenden Jahren vollzieht, läuft die E. durch anthropogene Einflüsse in nur wenigen Jahrzehnten ab. Längerfristig lässt sich die E. nur durch eine starke Beschränkung der Nährstoffzufuhr, z.B. durch eine Nährstoffentfernung aus Abwässern, vermindern.",
-      },
     ]);
   };
 
