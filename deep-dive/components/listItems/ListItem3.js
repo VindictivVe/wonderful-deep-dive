@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
         width: "80%",
         fontSize: 17,
         color: "gray"
+
     },
     title:{
         textAlign:"center",
