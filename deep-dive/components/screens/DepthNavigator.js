@@ -318,7 +318,8 @@ const DepthNavigator = () => {
   //Scroll to end when flatlist is initiated
   useEffect(() => {
     if (ref) {
-      ref.scrollToEnd({ animated: true });
+   
+        ref.scrollToEnd({ animated: false });
       setTimeout(() => {
         setIsScrolling(false);
       }, 1000);
@@ -418,6 +419,12 @@ const DepthNavigator = () => {
           style={styles.scrollView}
           horizontal
           data={data}
+          onLayout={() => {
+            ref.scrollToEnd({ animated: false });
+            setTimeout(() => {
+              setIsScrolling(false);
+            }, 1000);
+          }}
           renderItem={renderItem1}
           keyExtractor={(item) => item.id}
           onEndReachedThreshold={0.25}
