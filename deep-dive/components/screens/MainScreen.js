@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, FlatList } from 'react-native';
 import { Button } from 'react-native-elements';
 import HomeScreen from './HomeScreen';
 import DepthNavigator from './DepthNavigator';
+import HUD from './HUD';
 
 const MainScreen = () => {
     const [bolStart, setBolStart] = useState(false);
@@ -16,7 +17,11 @@ const MainScreen = () => {
                     )
                 :
                     (
-                        <DepthNavigator />
+                        <>
+                            <HUD/>
+                            {/* <DepthNavigator /> */}
+                        </>
+                        
                     )
             }
         </View>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   SafeAreaView,
   StatusBar,
@@ -7,7 +7,7 @@ import {
   FlatList,
 } from "react-native";
 import shortid from "shortid";
-
+import * as SplashScreen from 'expo-splash-screen';
 import { Gyroscope, Accelerometer } from "expo-sensors";
 
 import { ListItem1 } from "../listItems/ListItem1";
@@ -23,6 +23,7 @@ const DepthNavigator = () => {
   const [changable, setChangable] = useState(true);
   const [index, setIndex] = useState(0);
   const [isScrolling, setIsScrolling] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   const [gyroData, setGyroData] = useState({
     x: 0,
@@ -902,8 +903,33 @@ const DepthNavigator = () => {
     }
   };
 
+  useEffect(() => {
+    async function prepare() {
+      try {
+        await SplashScreen.preventAutoHideAsync();
+        await new Promise(resolve => setTimeout(resolve, 2000));
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        setIsLoading(true);
+      }
+    }
+
+    prepare();
+  }, []);
+
+  const onLayoutRootView = useCallback(async () => {
+    if (isLoading) {
+      await SplashScreen.hideAsync();
+    }
+  }, [isLoading]);
+
+  if (!isLoading) {
+    return null;
+  }
+
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container} onLayout={onLayoutRootView}>
       {index == 0 ? (
         <FlatList
           initialNumToRender={2}
@@ -911,6 +937,7 @@ const DepthNavigator = () => {
           horizontal
           data={data}
           onLayout={() => {
+            setIsLoading(false);
             ref.scrollToEnd({ animated: false });
             setTimeout(() => {
               setIsScrolling(false);
