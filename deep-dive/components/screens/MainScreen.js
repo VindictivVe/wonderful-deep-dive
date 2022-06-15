@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
-import { Button } from 'react-native-elements';
+import { useState } from 'react';
+import { View, StyleSheet } from 'react-native';
 import HomeScreen from './HomeScreen';
 import DepthNavigator from './DepthNavigator';
 import HUD from './HUD';
@@ -18,10 +17,8 @@ const MainScreen = () => {
                 :
                     (
                         <>
-                            <HUD/>
-                            {/* <DepthNavigator /> */}
+                        <DepthNavigator setBol={() => setBolStart(false)}/>
                         </>
-                        
                     )
             }
         </View>
