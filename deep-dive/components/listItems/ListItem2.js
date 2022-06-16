@@ -1,17 +1,32 @@
+import React, { Component } from "react";
 import { StyleSheet, Text, ImageBackground } from "react-native";
 
-export const ListItem2 = (props) => {  
-    return(
-        <ImageBackground source={require("deep-dive/assets/layers/DeepSeaEnviromentLvl2.png")} style={{width: props.width, height: props.height, justifyContent: "center", alignItems: "center"}}>
-            <Text style={styles.title}>
-                {props.title}
-            </Text>
-            <Text style={styles.text}>
-                {props.text}
-            </Text>
+class ListItem2 extends Component {
+    shouldComponentUpdate() {
+      return false;
+    }
+  
+    render() {
+      return (
+        <ImageBackground
+          source={require("deep-dive/assets/layers/DeepSeaEnviromentLvl2.png")}
+          style={{
+            width: this.props.width,
+            height: this.props.height,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Text style={styles.title}>{this.props.title}</Text>
+          <Text style={[styles.text, { paddingBottom: 60 }]}>
+            {this.props.text}
+          </Text>
         </ImageBackground>
-    );
-};
+      );
+    }
+  }
+  
+export default ListItem2;
 
 const styles = StyleSheet.create({
     text: {

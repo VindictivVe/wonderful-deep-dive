@@ -9,27 +9,27 @@ const HUD = (props) => {
 
     return(
         <View style={[styles.container, {width: props.hudWidth, height: props.hudHeight - props.topPadding, marginTop: props.topPadding}]}>
-            <View style= {[styles.absolute, styles.leftArrow]}>
+            <View style={[styles.absolute, styles.leftArrow]}>
                 <Entypo name="arrow-bold-left" size={50} color="white" />
             </View>
 
-            <View style= {[styles.absolute, styles.rightArrow]}>
+            <View style={[styles.absolute, styles.rightArrow]}>
                 <Entypo name="arrow-bold-right" size={50} color="white" />
             </View>
 
-            <View style= {[styles.absolute, styles.topArrow]}>
+            {!props.disableTop && <View style={[styles.absolute, styles.topArrow]}>
                 <Entypo name="arrow-bold-up" size={50} color="white" />
-            </View>
+            </View>}
 
-            <View style= {[styles.absolute, styles.bottomArrow]}>
+            {!props.disableBottom && <View style={[styles.absolute, styles.bottomArrow]}>
                 <Entypo name="arrow-bold-down" size={50} color="white" />
-            </View>
+            </View>}
 
-            <TouchableOpacity style= {[styles.absolute, styles.quitButton]} onPress={quitHandler}>
-            <Entypo name="circle-with-cross" size={50} color="white" />
+            <TouchableOpacity style={[styles.absolute, styles.quitButton]} onPress={quitHandler}>
+                <Entypo name="circle-with-cross" size={50} color="white" />
             </TouchableOpacity>
 
-            <Text style={[styles.absolute, styles.depthText]}>Ebene 1: 187m</Text>
+            <Text style={[styles.absolute, styles.depthText]}>{props.index === 0 ? "Ebene 1: 187m" : props.index === 1 ? "Ebene 2: 300m" : props.index === 2 ? "Ebene 3: 500m" : props.index === 3 ? "Ebene 4: 1000m" : props.index === 4 ? "Ebene 5: 5000m" : ""}</Text>
         </View>
     );
 }
