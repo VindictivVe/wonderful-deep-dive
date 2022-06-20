@@ -31,7 +31,7 @@ export default ListItem2;
 const styles = StyleSheet.create({
     text: {
         textAlign: "center",
-        width: "80%",
+        width: "75%",
         fontSize: 17
     },
     title:{

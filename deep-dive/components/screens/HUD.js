@@ -43,27 +43,32 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
     },
     absolute: {
-        position: 'absolute'
+        position: 'absolute',
     },
     leftArrow: {
         top: "40%",
         left: "3%",
+        opacity: 0.66,
     },
     rightArrow: {
         top: "40%",
         right: "3%",
+        opacity: 0.66,
     },
     topArrow: {
         top: "3%",
         left:"45%",
+        opacity: 0.66,
     },
     bottomArrow: {
         bottom: "3%",
         left:"45%",
+        opacity: 0.66,
     },
     quitButton: {
         right: "2%",
         top: "3%",
+        opacity: 0.66,
     },
     depthText: {
         left: "3%",

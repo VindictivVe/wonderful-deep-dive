@@ -31,7 +31,7 @@ class ListItem4 extends PureComponent {
 const styles = StyleSheet.create({
     text: {
         textAlign: "center",
-        width: "80%",
+        width: "75%",
         fontSize: 17,
         color: "white"
     },

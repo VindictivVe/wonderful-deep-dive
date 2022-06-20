@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, BackHandler } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, StyleSheet, BackHandler, Text } from 'react-native';
 import { Button } from 'react-native-elements';
 import * as ScreenOrientation from 'expo-screen-orientation';
 
@@ -18,6 +18,7 @@ const HomeScreen = (props) => {
 
     return(
         <View style={styles.container}>
+            <Text style={{color: 'white', fontSize: 30}}>Deep Sea Simulator</Text>
             <Button titleStyle={{color: "#13678A"}} containerStyle={styles.buttonContainer} buttonStyle={styles.buttonStyle} name="start" onPress={startHandler} title="Start"/>
             <Button titleStyle={{color: "#13678A"}} containerStyle={styles.buttonContainer} buttonStyle={styles.buttonStyle} name="quit" onPress={quitHandler} title="Quit" /> 
         </View>
