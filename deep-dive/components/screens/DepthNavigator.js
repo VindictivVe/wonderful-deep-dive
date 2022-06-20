@@ -235,12 +235,28 @@ const DepthNavigator = (props) => {
     }
   }, [gyroData]);
 
+   const postLayer = async (url = '', data = {}) => {
+    try{
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        }, 
+        body: JSON.stringify({id: 0}),
+      }).then(() => {console.log('YAY')}).catch(err => console.log("NOT YAY " + err));
+    } catch(e){
+      console.log(e);
+    }
+    
+  }
+
   //Called when accelerometer data changes
   const changeLayer = () => {
     if (accData && changable) {
       if (accData.z > 0.75 && index !== 4) {
         //Index +1
         setIndex(index + 1);
+        postLayer('http://localhost:4000/layer', JSON.stringify({id: index+1}));
         setChangable(false);
         setTimeout(() => {
           setChangable(true);
@@ -248,6 +264,7 @@ const DepthNavigator = (props) => {
       } else if (accData.z < -0.75 && index !== 0) {
         //Index -1
         setIndex(index - 1);
+        postLayer('http://localhost:4000/layer', JSON.stringify({id: index-1}));
         setChangable(false);
         setTimeout(() => {
           setChangable(true);

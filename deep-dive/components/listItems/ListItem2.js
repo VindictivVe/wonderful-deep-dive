@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { StyleSheet, Text, ImageBackground } from "react-native";
 
-class ListItem2 extends Component {
-    shouldComponentUpdate() {
+class ListItem2 extends PureComponent {
+    /* shouldComponentUpdate() {
       return false;
-    }
+    } */
   
     render() {
       return (
