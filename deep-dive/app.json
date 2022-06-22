@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "deep-dive",
-    "slug": "deep-dive",
+    "name": "Wonderful Deep Dive",
+    "slug": "Wonderful Deep Dive",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "landscape",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
@@ -24,7 +24,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "deep.sea.android"
     },
     "web": {
       "favicon": "./assets/favicon.png"

@@ -22,12 +22,13 @@ const DepthNavigator = (props) => {
   const [currentOffsetX, setCurrentOffsetX] = useState(0);
   const { height, width } = useWindowDimensions();
   const [ref, setRef] = useState(null);
-  const [changable, setChangable] = useState(true);
+  const [changable, setChangable] = useState(false);
   const [index, setIndex] = useState(0);
   const [isScrolling, setIsScrolling] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [disableTop, setDisableTop] = useState(true);
   const [disableBottom, setDisableBottom] = useState(false);
+  const [scrolledToEnd, setScrolledToEnd] = useState(false);
 
   const [gyroData, setGyroData] = useState({
     x: 0,
@@ -88,6 +89,9 @@ const DepthNavigator = (props) => {
     setGyroData({ x: 0, y: 0, z: 0 });
     _accSubscribe();
     setAccData({ x: 0, y: 0, z: 0 });
+    setTimeout(() => {
+      setChangable(true);
+    }, 5000);
     return () => {
       _gyroUnsubscribe();
       _accUnsubscribe();
@@ -242,8 +246,8 @@ const DepthNavigator = (props) => {
         headers: {
           'Content-Type': 'application/json',
         }, 
-        body: JSON.stringify({id: 0}),
-      }).then(() => {console.log('YAY')}).catch(err => console.log("NOT YAY " + err));
+        body: JSON.stringify({id: index}),
+      }).then((response) => response.json()).then(data => console.log(data)).catch(err => console.log("NOT YAY " + err));
     } catch(e){
       console.log(e);
     }
@@ -256,7 +260,7 @@ const DepthNavigator = (props) => {
       if (accData.z > 0.75 && index !== 4) {
         //Index +1
         setIndex(index + 1);
-        postLayer('http://localhost:4000/layer', JSON.stringify({id: index+1}));
+        postLayer('https://jsonplaceholder.typicode.com/posts', JSON.stringify({id: index+1}));
         setChangable(false);
         setTimeout(() => {
           setChangable(true);
@@ -264,7 +268,7 @@ const DepthNavigator = (props) => {
       } else if (accData.z < -0.75 && index !== 0) {
         //Index -1
         setIndex(index - 1);
-        postLayer('http://localhost:4000/layer', JSON.stringify({id: index-1}));
+        postLayer('https://jsonplaceholder.typicode.com/posts', JSON.stringify({id: index-1}));
         setChangable(false);
         setTimeout(() => {
           setChangable(true);
@@ -328,10 +332,6 @@ const DepthNavigator = (props) => {
     }
   }, [isLoading]);
 
-  useEffect(() => {
-    console.log('ref');
-  }, [ref]);
-
   if (isLoading) {
     return null;
   }
@@ -349,9 +349,8 @@ const DepthNavigator = (props) => {
           horizontal
           data={data}
           onLayout={() => {
-            console.log("test");
             setIsLoading(false);
-            ref.scrollToEnd({ animated: false });
+            {!scrolledToEnd ? (() => {ref.scrollToEnd({ animated: false }); setScrolledToEnd(true)}) : ''}
             setTimeout(() => {
               setIsScrolling(false);
             }, 100);
