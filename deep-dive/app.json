@@ -1,15 +1,15 @@
 {
   "expo": {
-    "name": "Wonderful Deep Dive",
-    "slug": "Wonderful Deep Dive",
+    "name": "WonderfulDeepDive",
+    "slug": "WonderfulDeepDive",
     "version": "1.0.0",
     "orientation": "landscape",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/wave.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#13678A"
     },
     "updates": {
       "fallbackToCacheTimeout": 0

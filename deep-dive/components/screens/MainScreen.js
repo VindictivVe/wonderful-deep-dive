@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import HomeScreen from './HomeScreen';
 import DepthNavigator from './DepthNavigator';
-import HUD from './HUD';
 
 const MainScreen = () => {
     const [bolStart, setBolStart] = useState(false);

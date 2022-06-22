@@ -5,6 +5,7 @@ import {
   StyleSheet,
   useWindowDimensions,
   FlatList,
+  Platform,
 } from "react-native";
 import shortid from "shortid";
 import * as SplashScreen from 'expo-splash-screen';
@@ -239,7 +240,7 @@ const DepthNavigator = (props) => {
     }
   }, [gyroData]);
 
-   const postLayer = async (url = '', data = {}) => {
+   const postLayer = async (url = '') => {
     try{
       fetch(url, {
         method: 'POST',
@@ -336,21 +337,22 @@ const DepthNavigator = (props) => {
     return null;
   }
 
-  return (
-    <SafeAreaView style={styles.container} onLayout={onLayoutRootView}>
+  if(Platform.OS !== 'ios'){
+    return(
+      <SafeAreaView style={styles.container} onLayout={onLayoutRootView}>
       <HUD index={index} disableTop={disableTop} disableBottom={disableBottom} hudWidth={width} hudHeight={height} topPadding={StatusBar.currentHeight} setBol={() => props.setBol()}/>
       {index == 0 ? (
         <FlatList
           windowSize={1} 
           maxToRenderPerBatch={6}
           removeClippedSubviews={true}
-          initialNumToRender={5}
+          initialNumToRender={3}
           style={styles.scrollView}
           horizontal
           data={data}
           onLayout={() => {
             setIsLoading(false);
-            {!scrolledToEnd ? (() => {ref.scrollToEnd({ animated: false }); setScrolledToEnd(true)}) : ''}
+            ref.scrollToEnd({ animated: false });
             setTimeout(() => {
               setIsScrolling(false);
             }, 100);
@@ -367,13 +369,12 @@ const DepthNavigator = (props) => {
           })}
           onScroll={getCurrentOffset}
         />
-        
       ) : index == 1 ? (
         <FlatList
           windowSize={1} 
           maxToRenderPerBatch={6}
           removeClippedSubviews={true}
-          initialNumToRender={5}
+          initialNumToRender={3}
           style={styles.scrollView}
           horizontal
           data={data}
@@ -393,7 +394,7 @@ const DepthNavigator = (props) => {
         <FlatList
           maxToRenderPerBatch={6}
           removeClippedSubviews={true}
-          initialNumToRender={5}
+          initialNumToRender={3}
           style={styles.scrollView}
           horizontal
           data={data}
@@ -413,7 +414,7 @@ const DepthNavigator = (props) => {
         <FlatList
           maxToRenderPerBatch={6}
           removeClippedSubviews={true}
-          initialNumToRender={5}
+          initialNumToRender={3}
           style={styles.scrollView}
           horizontal
           data={data}
@@ -433,7 +434,7 @@ const DepthNavigator = (props) => {
         <FlatList
           maxToRenderPerBatch={6}
           removeClippedSubviews={true}
-          initialNumToRender={5}
+          initialNumToRender={3}
           style={styles.scrollView}
           horizontal
           data={data}
@@ -453,7 +454,126 @@ const DepthNavigator = (props) => {
         <></>
       )}
     </SafeAreaView>
-  );
+    );
+  } else {
+    return(
+      <View style={styles.container} onLayout={onLayoutRootView}>
+      <HUD index={index} disableTop={disableTop} disableBottom={disableBottom} hudWidth={width} hudHeight={height} topPadding={StatusBar.currentHeight} setBol={() => props.setBol()}/>
+      {index == 0 ? (
+        <FlatList
+          windowSize={1} 
+          maxToRenderPerBatch={6}
+          removeClippedSubviews={true}
+          initialNumToRender={3}
+          style={styles.scrollView}
+          horizontal
+          data={data}
+          onLayout={() => {
+            setIsLoading(false);
+            ref.scrollToEnd({ animated: false })
+            setTimeout(() => {
+              setIsScrolling(false);
+            }, 100);
+          }}
+          renderItem={renderItem1}
+          keyExtractor={(item) => item.id}
+          onEndReachedThreshold={0.25}
+          onEndReached={endHandler}
+          ref={(ref) => setRef(ref)}
+          getItemLayout={(data, index) => ({
+            length: width,
+            offset: width * index,
+            index,
+          })}
+          onScroll={getCurrentOffset}
+        />
+      ) : index == 1 ? (
+        <FlatList
+          windowSize={1} 
+          maxToRenderPerBatch={6}
+          removeClippedSubviews={true}
+          initialNumToRender={3}
+          style={styles.scrollView}
+          horizontal
+          data={data}
+          renderItem={renderItem2}
+          keyExtractor={(item) => item.id}
+          onEndReachedThreshold={0.25}
+          onEndReached={endHandler}
+          ref={(ref) => setRef(ref)}
+          getItemLayout={(data, index) => ({
+            length: width,
+            offset: width * index,
+            index,
+          })}
+          onScroll={getCurrentOffset}
+        />
+      ) : index == 2 ? (
+        <FlatList
+          maxToRenderPerBatch={6}
+          removeClippedSubviews={true}
+          initialNumToRender={3}
+          style={styles.scrollView}
+          horizontal
+          data={data}
+          renderItem={renderItem3}
+          keyExtractor={(item) => item.id}
+          onEndReachedThreshold={0.25}
+          onEndReached={endHandler}
+          ref={(ref) => setRef(ref)}
+          getItemLayout={(data, index) => ({
+            length: width,
+            offset: width * index,
+            index,
+          })}
+          onScroll={getCurrentOffset}
+        />
+      ) : index == 3 ? (
+        <FlatList
+          maxToRenderPerBatch={6}
+          removeClippedSubviews={true}
+          initialNumToRender={3}
+          style={styles.scrollView}
+          horizontal
+          data={data}
+          renderItem={renderItem4}
+          keyExtractor={(item) => item.id}
+          onEndReachedThreshold={0.25}
+          onEndReached={endHandler}
+          ref={(ref) => setRef(ref)}
+          getItemLayout={(data, index) => ({
+            length: width,
+            offset: width * index,
+            index,
+          })}
+          onScroll={getCurrentOffset}
+        />
+      ) : index == 4 ? (
+        <FlatList
+          maxToRenderPerBatch={6}
+          removeClippedSubviews={true}
+          initialNumToRender={3}
+          style={styles.scrollView}
+          horizontal
+          data={data}
+          renderItem={renderItem5}
+          keyExtractor={(item) => item.id}
+          onEndReachedThreshold={0.25}
+          onEndReached={endHandler}
+          ref={(ref) => setRef(ref)}
+          getItemLayout={(data, index) => ({
+            length: width,
+            offset: width * index,
+            index,
+          })}
+          onScroll={getCurrentOffset}
+        />
+      ) : (
+        <></>
+      )}
+    </View>
+    );
+  }
 };
 
 const styles = StyleSheet.create({
