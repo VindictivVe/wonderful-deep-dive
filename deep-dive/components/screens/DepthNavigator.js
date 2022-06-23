@@ -29,7 +29,6 @@ const DepthNavigator = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [disableTop, setDisableTop] = useState(true);
   const [disableBottom, setDisableBottom] = useState(false);
-  const [scrolledToEnd, setScrolledToEnd] = useState(false);
 
   const [gyroData, setGyroData] = useState({
     x: 0,
@@ -55,7 +54,7 @@ const DepthNavigator = (props) => {
 
   const _gyroUnsubscribe = () => {
     gyroSubscription && gyroSubscription.remove();
-    setGyroData(null);
+    setGyroSubscription(null);
   };
 
   const [accData, setAccData] = useState({
@@ -82,7 +81,7 @@ const DepthNavigator = (props) => {
 
   const _accUnsubscribe = () => {
     accSubscription && accSubscription.remove();
-    setAccData(null);
+    setGyroSubscription(null);
   };
 
   useEffect(() => {

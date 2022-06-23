@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, StyleSheet, BackHandler, Text } from 'react-native';
+import { View, StyleSheet, BackHandler, Text, Platform } from 'react-native';
 import { Button } from 'react-native-elements';
 import * as ScreenOrientation from 'expo-screen-orientation';
 
@@ -13,7 +13,12 @@ const HomeScreen = (props) => {
     }
 
     useEffect(() => {
-        ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE_LEFT);
+        if(Platform.OS === 'ios'){
+            ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE_RIGHT);
+        }
+        else {
+            ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE_LEFT);
+        }
     }, []);
 
     return(
