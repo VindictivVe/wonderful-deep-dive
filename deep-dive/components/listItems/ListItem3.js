@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         textAlign: "center",
         width: "75%",
         fontSize: 17,
-        color: "gray"
+        color: "lightgray"
 
     },
     title:{
@@ -41,6 +41,6 @@ const styles = StyleSheet.create({
         width: "90%",
         fontSize: 30,
         fontWeight: "bold",
-        color: "gray"
+        color: "lightgray"
     }
 });

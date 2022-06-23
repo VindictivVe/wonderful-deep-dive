@@ -29,7 +29,7 @@ const HUD = (props) => {
                 <Entypo name="circle-with-cross" size={50} color="white" />
             </TouchableOpacity>
 
-            <Text style={[styles.absolute, styles.depthText]}>{props.index === 0 ? "Ebene 1: bis 200m" : props.index === 1 ? "Ebene 2: bis 1000m" : props.index === 2 ? "Ebene 3: bis 4000m" : props.index === 3 ? "Ebene 4: bis 6000m" : props.index === 4 ? "Ebene 5: bis 11000m" : ""}</Text>
+            <Text style={[styles.absolute, styles.depthText, props.index === 0 || props.index === 1 ? {color: 'black'} : props.index === 2 ? {color: 'lightgray'} : {color: 'white'}]}>{props.index === 0 ? "Ebene 1: bis 200m" : props.index === 1 ? "Ebene 2: bis 1000m" : props.index === 2 ? "Ebene 3: bis 4000m" : props.index === 3 ? "Ebene 4: bis 6000m" : props.index === 4 ? "Ebene 5: bis 11000m" : ""}</Text>
         </View>
     );
 }
@@ -73,7 +73,6 @@ const styles = StyleSheet.create({
     depthText: {
         left: "3%",
         top: "7%",
-        color: "white",
         fontSize: 24,
     }
 }) 
