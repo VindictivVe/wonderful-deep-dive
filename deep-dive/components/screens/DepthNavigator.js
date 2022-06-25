@@ -6,6 +6,7 @@ import {
   useWindowDimensions,
   FlatList,
   Platform,
+  View
 } from "react-native";
 import shortid from "shortid";
 import * as SplashScreen from "expo-splash-screen";
@@ -262,7 +263,7 @@ const DepthNavigator = (props) => {
         //Index +1
         setIndex(index + 1);
         postLayer(
-          "https://jsonplaceholder.typicode.com/posts",
+          "http://141.22.6.101:9980",
           JSON.stringify({ id: index + 1 })
         );
         setChangable(false);
@@ -273,7 +274,7 @@ const DepthNavigator = (props) => {
         //Index -1
         setIndex(index - 1);
         postLayer(
-          "https://jsonplaceholder.typicode.com/posts",
+          "http://141.22.6.101:9980",
           JSON.stringify({ id: index - 1 })
         );
         setChangable(false);

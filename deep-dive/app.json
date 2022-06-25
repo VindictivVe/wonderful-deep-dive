@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "WonderfulDeepDive",
-    "slug": "WonderfulDeepDive",
+    "name": "Deep Sea Simulator - MoSy",
+    "slug": "deep-sea-simulator",
     "version": "1.0.0",
-    "orientation": "landscape",
+    "orientation": "default",
     "icon": "./assets/wave.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -29,6 +29,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "",
+    "githubUrl": "https://github.com/VindictivVe/wonderful-deep-dive"
   }
 }
