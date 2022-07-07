@@ -1,10 +1,20 @@
-import { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { View, StyleSheet, Image } from 'react-native';
 import HomeScreen from './HomeScreen';
 import DepthNavigator from './DepthNavigator';
 
 const MainScreen = () => {
     const [bolStart, setBolStart] = useState(false);
+    const [slides, setSlides] = useState([]);
+
+    useEffect((props) => {
+      setSlides([require("../../assets/layers/DeepSeaEnviromentLvl1.png"),
+      require("../../assets/layers/DeepSeaEnviromentLvl2.png"),
+      require("../../assets/layers/DeepSeaEnviromentLvl3.png"),
+      require("../../assets/layers/DeepSeaEnviromentLvl4.png"),
+      require("../../assets/layers/DeepSeaEnviromentLvl5.png")])
+    }, [])
 
     return(
         <View style={styles.container}>
@@ -16,7 +26,7 @@ const MainScreen = () => {
                 :
                     (
                         <>
-                        <DepthNavigator setBol={() => setBolStart(false)}/>
+                        <DepthNavigator setBol={() => setBolStart(false)} slides = {slides}/>
                         </>
                     )
             }

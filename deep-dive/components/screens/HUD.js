@@ -1,3 +1,4 @@
+import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import Entypo from '@expo/vector-icons/Entypo';
 
@@ -38,9 +39,8 @@ const styles = StyleSheet.create({
     container: {
         zIndex: 99,
         alignItems: 'center',
-        backgroundColor: "#13678A",
+        backgroundColor: "transparent",
         position: 'absolute',
-        backgroundColor: 'transparent',
     },
     absolute: {
         position: 'absolute',

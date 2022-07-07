@@ -2,14 +2,10 @@ import React, { PureComponent } from "react";
 import { StyleSheet, Text, ImageBackground } from "react-native";
 
 class ListItem1 extends PureComponent {
-  /* shouldComponentUpdate() {
-    return false;
-  } */
-
   render() {
     return (
       <ImageBackground
-        source={require("deep-dive/assets/layers/DeepSeaEnviromentLvl1.png")}
+        source={this.props.image}
         style={{
           width: this.props.width,
           height: this.props.height,

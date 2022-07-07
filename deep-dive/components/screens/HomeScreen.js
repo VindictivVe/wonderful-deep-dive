@@ -13,12 +13,7 @@ const HomeScreen = (props) => {
     }
 
     useEffect(() => {
-        if(Platform.OS === 'ios'){
-            ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE_RIGHT);
-        }
-        else {
-            ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE_LEFT);
-        }
+        ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE_LEFT);
     }, []);
 
     return(
